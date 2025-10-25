@@ -36,8 +36,8 @@ jobs:
       - name: Upload VSIX artifact
         uses: actions/upload-artifact@v4
         with:
-          name: code-buddy
-          path: ./code-buddy-1.0.0.vsix
+          name: code-buddy-sidekick
+          path: ./code-buddy-sidekick.vsix
 
   release:
     runs-on: ubuntu-latest
@@ -49,14 +49,16 @@ jobs:
       - name: Download VSIX artifact
         uses: actions/download-artifact@v4
         with:
-          name: code-buddy
+          name: code-buddy-sidekick
           path: ./artifacts
 
       - name: Get version from package.json
         id: get_version
         run: |
           VERSION=$(node -p "require('./package.json').version")
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+          # перейменовуємо VSIX у стандартний шлях
+          mv code-buddy-sidekick-$VERSION.vsix code-buddy-sidekick.vsix
 
       - name: Create tag if not exists
         run: |
@@ -70,10 +72,10 @@ jobs:
             git push origin "v$VERSION"
           fi
 
-      - name: Create GitHub Release
+      - name: Create GitHub Release and upload file
         run: |
-          VERSION=${{ steps.get_version.outputs.version }}
-          gh release create "v$VERSION" ./artifacts/code-buddy-1.0.0.vsix \
+          VERSION=${{ steps.get_version.outputs.VERSION }}
+          gh release create "v$VERSION" ./artifacts/code-buddy-sidekick.vsix \
             --title "Code Buddy v$VERSION" \
             --notes "Automated VS Code extension release"
         env:
@@ -84,6 +86,6 @@ jobs:
 
       - name: Publish to VS Code Marketplace
         run: |
-          vsce publish --packagePath ./artifacts/code-buddy-1.0.0.vsix --pat $VSCE_PAT
+          vsce publish --packagePath ./artifacts/code-buddy-sidekick.vsix --pat $VSCE_PAT
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
