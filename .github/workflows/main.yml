@@ -52,13 +52,32 @@ jobs:
           name: code-buddy
           path: ./artifacts
 
+      - name: Get version from package.json
+        id: get_version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create tag if not exists
+        run: |
+          VERSION=${{ steps.get_version.outputs.version }}
+          if git rev-parse "v$VERSION" >/dev/null 2>&1; then
+            echo "Tag v$VERSION already exists"
+          else
+            git config --global user.name "github-actions"
+            git config --global user.email "github-actions@github.com"
+            git tag -a "v$VERSION" -m "Release v$VERSION"
+            git push origin "v$VERSION"
+          fi
+
       - name: Create GitHub Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: ./artifacts/code-buddy-1.0.0.vsix
+        run: |
+          VERSION=${{ steps.get_version.outputs.version }}
+          gh release create "v$VERSION" ./artifacts/code-buddy-1.0.0.vsix \
+            --title "Code Buddy v$VERSION" \
+            --notes "Automated VS Code extension release"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to VS Code Marketplace
         run: |
