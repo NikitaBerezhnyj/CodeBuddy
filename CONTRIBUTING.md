@@ -1,11 +1,11 @@
-# Contributing to CodeBuddy
+# Contributing to Code Buddy Sidekick
 
-Thank you for your interest in contributing to **CodeBuddy**!  
+Thank you for your interest in contributing to **Code Buddy Sidekick**!  
 We appreciate every contribution, big or small, and your efforts help improve the project for everyone.
 
 ## How to Contribute
 
-There are several ways you can contribute to **CodeBuddy**:
+There are several ways you can contribute to **Code Buddy Sidekick**:
 
 ### 1. Reporting Issues
 
@@ -14,7 +14,7 @@ There are several ways you can contribute to **CodeBuddy**:
 
 ### 2. Suggesting Enhancements
 
-- If you have ideas for improving **CodeBuddy**, please describe them in a new issue.
+- If you have ideas for improving **Code Buddy Sidekick**, please describe them in a new issue.
 - Include examples or use cases whenever possible.
 
 ### 3. Submitting Pull Requests
@@ -23,12 +23,12 @@ There are several ways you can contribute to **CodeBuddy**:
 - Keep your changes focused on a single purpose.
 - Write clear and descriptive commit messages.
 - Include tests for any new functionality.
-- Ensure your code follows the existing style and conventions of **CodeBuddy**.
+- Ensure your code follows the existing style and conventions of **Code Buddy Sidekick**.
 
 ### 4. Code Review
 
 - Review open pull requests when possible.
-- Provide constructive feedback to help maintain the quality of **CodeBuddy**.
+- Provide constructive feedback to help maintain the quality of **Code Buddy Sidekick**.
 - Be respectful and collaborative in discussions.
 
 ## Guidelines
@@ -40,6 +40,6 @@ There are several ways you can contribute to **CodeBuddy**:
 
 ## Thank You!
 
-Your contributions make **CodeBuddy** better for everyone.  
+Your contributions make **Code Buddy Sidekick** better for everyone.  
 Even small fixes, documentation updates, or suggestions are highly valued.  
-We look forward to your contributions and appreciate your help in making **CodeBuddy** a stronger, more reliable project.
+We look forward to your contributions and appreciate your help in making **Code Buddy Sidekick** a stronger, more reliable project.

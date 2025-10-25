@@ -1,6 +1,6 @@
 ---
 name: Feature Request
-about: Suggest a new idea or improvement for CodeBuddy
+about: Suggest a new idea or improvement for Code Buddy Sidekick
 title: "[Feature] "
 labels: enhancement
 assignees: ""
@@ -8,7 +8,7 @@ assignees: ""
 
 ## Feature Description
 
-A clear and concise description of the feature you would like to see in CodeBuddy.
+A clear and concise description of the feature you would like to see in Code Buddy Sidekick.
 
 ## Problem Statement
 

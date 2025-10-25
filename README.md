@@ -1,6 +1,6 @@
-# CodeBuddy
+# Code Buddy Sidekick
 
-## CodeBuddy :uk:
+## Code Buddy Sidekick :uk:
 
 <p align='center'>
   <img src='assets/icon.png' alt='Extension Icon' style="width:50%">
@@ -8,7 +8,7 @@
 
 ## Overview
 
-CodeBuddy is a fun and interactive extension for Visual Studio Code that adds a character named Code Buddy to your editor. Code Buddy watches your code, reacts to errors, and follows your typing, making coding more engaging and helping you catch mistakes early.
+Code Buddy Sidekick is a fun and interactive extension for Visual Studio Code that adds a character named Code Buddy to your editor. Code Buddy watches your code, reacts to errors, and follows your typing, making coding more engaging and helping you catch mistakes early.
 
 ## Features
 
@@ -28,18 +28,18 @@ CodeBuddy is a fun and interactive extension for Visual Studio Code that adds a 
 
 ## Getting Started
 
-To get started with CodeBuddy, follow these steps:
+To get started with Code Buddy Sidekick, follow these steps:
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/NikitaBerezhnyj/CodeBuddy.git
+   git clone https://github.com/NikitaBerezhnyj/CodeBuddySidekick.git
    ```
 
 2. Navigate to the project folder:
 
    ```bash
-   cd CodeBuddy
+   cd CodeBuddySidekick
    ```
 
 3. Build the extension:
@@ -52,7 +52,7 @@ To get started with CodeBuddy, follow these steps:
 
 ## Usage
 
-Once CodeBuddy is installed:
+Once Code Buddy Sidekick is installed:
 
 1. Open Visual Studio Code.
 2. Code Buddy will appear in the sidebar.
@@ -72,7 +72,7 @@ Enjoy having Code Buddy as your coding companion!
 
 ---
 
-## CodeBuddy :ukraine:
+## Code Buddy Sidekick :ukraine:
 
 <p align='center'>
   <img src='assets/icon.png' alt='Extension Icon' style="width:50%">
@@ -80,7 +80,7 @@ Enjoy having Code Buddy as your coding companion!
 
 ## Огляд
 
-CodeBuddy — це веселий та інтерактивний розширення для Visual Studio Code, яке додає персонажа на ім’я Code Buddy до вашого редактора. Code Buddy слідкує за вашим кодом, реагує на помилки та супроводжує вас під час набору тексту, роблячи процес програмування більш захоплюючим і допомагаючи помічати помилки на ранньому етапі.
+Code Buddy Sidekick — це веселий та інтерактивний розширення для Visual Studio Code, яке додає персонажа на ім’я Code Buddy до вашого редактора. Code Buddy слідкує за вашим кодом, реагує на помилки та супроводжує вас під час набору тексту, роблячи процес програмування більш захоплюючим і допомагаючи помічати помилки на ранньому етапі.
 
 ## Особливості
 
@@ -100,18 +100,18 @@ CodeBuddy — це веселий та інтерактивний розшире
 
 ## Початок роботи
 
-Щоб розпочати роботу з CodeBuddy, виконайте наступні кроки:
+Щоб розпочати роботу з Code Buddy Sidekick, виконайте наступні кроки:
 
 1. Клонуйте репозиторій:
 
    ```bash
-   git clone https://github.com/NikitaBerezhnyj/CodeBuddy.git
+   git clone https://github.com/NikitaBerezhnyj/CodeBuddySidekick.git
    ```
 
 2. Перейдіть до папки проекту:
 
    ```bash
-   cd CodeBuddy
+   cd CodeBuddySidekick
    ```
 
 3. Зберіть розширення:
@@ -124,7 +124,7 @@ CodeBuddy — це веселий та інтерактивний розшире
 
 ## Використання
 
-Після встановлення CodeBuddy:
+Після встановлення Code Buddy Sidekick:
 
 1. Відкрийте Visual Studio Code.
 2. Code Buddy з’явиться у боковій панелі.

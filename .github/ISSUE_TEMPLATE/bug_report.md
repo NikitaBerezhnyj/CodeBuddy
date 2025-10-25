@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: Report a problem or unexpected behavior in CodeBuddy
+about: Report a problem or unexpected behavior in Code Buddy Sidekick
 title: "[Bug] "
 labels: bug
 assignees: ""
@@ -33,7 +33,7 @@ If applicable, add screenshots, logs, or error messages to help explain the prob
 
 - OS: [e.g. Windows 11, Ubuntu 22.04, macOS 14]
 - Browser / Runtime: [e.g. Chrome 117, Node.js 20]
-- Version of CodeBuddy: [e.g. 1.0.0]
+- Version of Code Buddy Sidekick: [e.g. 1.0.0]
 
 ## Additional Context
 

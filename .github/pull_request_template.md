@@ -1,4 +1,4 @@
-# Pull Request for CodeBuddy
+# Pull Request for Code Buddy Sidekick
 
 ## Description
 

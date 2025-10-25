@@ -1,10 +1,10 @@
-# CodeBuddy
+# Code Buddy Sidekick
 
 <p align='center'>
-  <img src='https://raw.githubusercontent.com/NikitaBerezhnyj/CodeBuddy/main/assets/icon.png' alt='Extension Icon' style="width:50%">
+  <img src='https://raw.githubusercontent.com/NikitaBerezhnyj/CodeBuddySidekick/main/assets/icon.png' alt='Extension Icon' style="width:50%">
 </p>
 
-CodeBuddy is a fun and interactive extension for Visual Studio Code that adds a character named Code Buddy to your editor. Code Buddy watches your code, reacts to errors, and follows your typing, making coding more engaging and helping you catch mistakes early.
+Code Buddy Sidekick is a fun and interactive extension for Visual Studio Code that adds a character named Code Buddy to your editor. Code Buddy watches your code, reacts to errors, and follows your typing, making coding more engaging and helping you catch mistakes early.
 
 ## 🌟 Features
 
@@ -24,4 +24,4 @@ This extension was inspired by and uses code from the [InYourFace](https://githu
 
 - **Dependencies**: None.
 - **Current Version**: 1.0.0.
-- **Source Code**: [GitHub Repository](https://github.com/NikitaBerezhnyj/CodeBuddy).
+- **Source Code**: [GitHub Repository](https://github.com/NikitaBerezhnyj/CodeBuddySidekick).

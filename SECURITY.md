@@ -1,8 +1,8 @@
-# Security Policy for CodeBuddy
+# Security Policy for Code Buddy Sidekick
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in **CodeBuddy**, please report it responsibly.  
+If you discover a security vulnerability in **Code Buddy Sidekick**, please report it responsibly.  
 To do so, open an issue in this repository with the label `security` or submit a confidential report via your platform's private issue system (if available).
 
 Please include:
@@ -19,5 +19,5 @@ Please include:
 
 ## Responsible Disclosure
 
-By following responsible disclosure, you help protect users and maintain the integrity of **CodeBuddy**.  
+By following responsible disclosure, you help protect users and maintain the integrity of **Code Buddy Sidekick**.  
 Please do not publicly disclose vulnerabilities before a fix is released.
