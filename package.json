@@ -82,10 +82,10 @@
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "format": "prettier --write src",
-    "test": "node ./out/test/runTest.js"
+    "build": "vsce package",
+    "package": "shx mv README.md README.md.bak && shx cp docs/README.md README.md && npm run compile && npm run build && shx rm README.md && shx mv README.md.bak README.md"
   },
   "devDependencies": {
     "@types/glob": "^7.1.4",
@@ -99,6 +99,7 @@
     "glob": "^7.1.7",
     "mocha": "^11.0.1",
     "prettier": "^3.4.2",
+    "shx": "^0.4.0",
     "typescript": "^4.4.3"
   }
 }
