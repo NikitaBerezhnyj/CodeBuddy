@@ -30,24 +30,24 @@ jobs:
       - name: Install vsce
         run: npm install -g vsce
 
-      - name: Build VSIX
-        run: npm run package
-
-      - name: Get version from package.json
-        id: get_version
+      - name: Get version and name from package.json
+        id: get_meta
         run: |
+          NAME=$(node -p "require('./package.json').name")
           VERSION=$(node -p "require('./package.json').version")
+          echo "NAME=$NAME" >> $GITHUB_OUTPUT
           echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Rename VSIX with version
+      - name: Build VSIX
         run: |
-          mv code-buddy-sidekick.vsix code-buddy-sidekick-${{ steps.get_version.outputs.VERSION }}.vsix
+          vsce package
+          echo "Built file: ${{ steps.get_meta.outputs.NAME }}-${{ steps.get_meta.outputs.VERSION }}.vsix"
 
       - name: Upload VSIX artifact
         uses: actions/upload-artifact@v4
         with:
           name: code-buddy-sidekick
-          path: code-buddy-sidekick-${{ steps.get_version.outputs.VERSION }}.vsix
+          path: ./${{ steps.get_meta.outputs.NAME }}-${{ steps.get_meta.outputs.VERSION }}.vsix
 
   release:
     runs-on: ubuntu-latest
@@ -62,19 +62,21 @@ jobs:
           name: code-buddy-sidekick
           path: ./artifacts
 
-      - name: Get version from package.json
-        id: get_version
+      - name: Get version and name from package.json
+        id: get_meta
         run: |
+          NAME=$(node -p "require('./package.json').name")
           VERSION=$(node -p "require('./package.json').version")
+          echo "NAME=$NAME" >> $GITHUB_OUTPUT
           echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Rename VSIX for release
         run: |
-          mv ./artifacts/code-buddy-sidekick-${{ steps.get_version.outputs.VERSION }}.vsix ./artifacts/code-buddy-sidekick.vsix
+          mv ./artifacts/${{ steps.get_meta.outputs.NAME }}-${{ steps.get_meta.outputs.VERSION }}.vsix ./artifacts/${{ steps.get_meta.outputs.NAME }}.vsix
 
       - name: Create tag if not exists
         run: |
-          VERSION=${{ steps.get_version.outputs.VERSION }}
+          VERSION=${{ steps.get_meta.outputs.VERSION }}
           if git rev-parse "v$VERSION" >/dev/null 2>&1; then
             echo "Tag v$VERSION already exists"
           else
@@ -86,8 +88,8 @@ jobs:
 
       - name: Create GitHub Release and upload file
         run: |
-          VERSION=${{ steps.get_version.outputs.VERSION }}
-          gh release create "v$VERSION" ./artifacts/code-buddy-sidekick.vsix \
+          VERSION=${{ steps.get_meta.outputs.VERSION }}
+          gh release create "v$VERSION" ./artifacts/${{ steps.get_meta.outputs.NAME }}.vsix \
             --title "Code Buddy v$VERSION" \
             --notes "Automated VS Code extension release"
         env:
@@ -98,6 +100,6 @@ jobs:
 
       - name: Publish to VS Code Marketplace
         run: |
-          vsce publish --packagePath ./artifacts/code-buddy-sidekick.vsix --pat $VSCE_PAT
+          vsce publish --packagePath ./artifacts/${{ steps.get_meta.outputs.NAME }}.vsix --pat $VSCE_PAT
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
