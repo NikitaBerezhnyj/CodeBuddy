@@ -13,10 +13,10 @@ on:
       - prod
 
 jobs:
-  build-and-release:
+  build-and-package:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -30,27 +30,74 @@ jobs:
       - name: Install vsce
         run: npm install -g vsce
 
-      - name: Get version
+      - name: Build VSIX
+        run: npm run package
+
+      - name: Get version from package.json
         id: get_version
         run: |
           VERSION=$(node -p "require('./package.json').version")
           echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Build VSIX
-        run: npm run package
-
-      - name: Rename VSIX
-        run: mv code-buddy-sidekick-$VERSION.vsix code-buddy-sidekick.vsix
-
-      - name: Create GitHub Release
+      - name: Rename VSIX with version
         run: |
-          gh release create "v${{ steps.get_version.outputs.VERSION }}" ./code-buddy-sidekick.vsix \
-            --title "Code Buddy v${{ steps.get_version.outputs.VERSION }}" \
+          mv code-buddy-sidekick.vsix code-buddy-sidekick-${{ steps.get_version.outputs.VERSION }}.vsix
+
+      - name: Upload VSIX artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-buddy-sidekick
+          path: code-buddy-sidekick-${{ steps.get_version.outputs.VERSION }}.vsix
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build-and-package
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download VSIX artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: code-buddy-sidekick
+          path: ./artifacts
+
+      - name: Get version from package.json
+        id: get_version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Rename VSIX for release
+        run: |
+          mv ./artifacts/code-buddy-sidekick-${{ steps.get_version.outputs.VERSION }}.vsix ./artifacts/code-buddy-sidekick.vsix
+
+      - name: Create tag if not exists
+        run: |
+          VERSION=${{ steps.get_version.outputs.VERSION }}
+          if git rev-parse "v$VERSION" >/dev/null 2>&1; then
+            echo "Tag v$VERSION already exists"
+          else
+            git config --global user.name "github-actions"
+            git config --global user.email "github-actions@github.com"
+            git tag -a "v$VERSION" -m "Release v$VERSION"
+            git push origin "v$VERSION"
+          fi
+
+      - name: Create GitHub Release and upload file
+        run: |
+          VERSION=${{ steps.get_version.outputs.VERSION }}
+          gh release create "v$VERSION" ./artifacts/code-buddy-sidekick.vsix \
+            --title "Code Buddy v$VERSION" \
             --notes "Automated VS Code extension release"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Install vsce
+        run: npm install -g vsce
+
       - name: Publish to VS Code Marketplace
-        run: vsce publish --packagePath ./code-buddy-sidekick.vsix --pat $VSCE_PAT
+        run: |
+          vsce publish --packagePath ./artifacts/code-buddy-sidekick.vsix --pat $VSCE_PAT
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
