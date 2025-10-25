@@ -84,7 +84,6 @@ jobs:
 
       - name: Publish to VS Code Marketplace
         run: |
-          vsce login ${{ secrets.VSCE_PUBLISHER }}
-          vsce publish --packagePath ./artifacts/code-buddy-1.0.0.vsix
+          vsce publish --packagePath ./artifacts/code-buddy-1.0.0.vsix --pat $VSCE_PAT
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
