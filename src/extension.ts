@@ -82,7 +82,7 @@ class CustomSidebarViewProvider implements vscode.WebviewViewProvider {
     );
 
     const [errorNum, errorWar] = getNumErrors();
-    const config = vscode.workspace.getConfiguration("Code Buddy");
+    const config = vscode.workspace.getConfiguration("Code Buddy Sidekick");
     const errorUseWarnings = config.get<boolean>("error.usewarnings");
 
     const displayMessage =
