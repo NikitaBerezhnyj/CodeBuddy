@@ -2,7 +2,7 @@
   "name": "code-buddy-sidekick",
   "displayName": "Code Buddy Sidekick",
   "description": "The Code Buddy Sidekick extension adds a friend named Code Buddy to VS Code. He will react to errors in your code and watch when you start entering new code so that you don't make mistakes.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "NikitaBerezhnyj",
   "homepage": "https://github.com/NikitaBerezhnyj/Code_Buddy",
   "license": "MIT",
